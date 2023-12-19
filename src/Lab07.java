@@ -1,48 +1,54 @@
-import java.util.Arrays;
+import java.util.Iterator;
 
-
-
-class Main {
+class Main{
     public static void main(String[] args) {
-
-        Set<String> colors = new Set<>();
-
-
-        System.out.println("Is set empty: " + colors.isEmpty());
-
-        colors.add("Red");
-        colors.add("Green");
-        colors.add("Blue");
-
-        System.out.println("Set size after adding elements: " + colors.size());
-
-        System.out.println("Set contains 'Red': " + colors.contains("Red"));
-
-        colors.remove("Blue");
-
-        System.out.println("Set size after removing element: " + colors.size());
-
-        System.out.println("Colors set contains all selected colors: " + colors.containsAll(Arrays.asList("Red", "Green")));
-
-        colors.removeAll(Arrays.asList("Red", "Green"));
-
-        System.out.println("Colors set after removing elements: " + colors.size());
-
-        colors.addAll(Arrays.asList("Yellow", "Purple", "Orange"));
-
-        System.out.println("Colors set after adding several elements at once: " + colors.size());
-
-        colors.retainAll(Arrays.asList("Yellow","Purple"));
-
-        System.out.println("Set size after retaining: " + colors.size());
+        HashSet<String> set = new HashSet<>(10);
 
 
-        colors.clear();
+        System.out.println("Size after creation: " + set.size());
+        System.out.println("Is empty: " + set.isEmpty());
 
-        System.out.println("Set empty after clearing: " + colors.isEmpty());
+
+        set.add("apple");
+        set.add("banana");
+        set.add("cherry");
+        System.out.println("Size after adding elements: " + set.size());
+        System.out.println("Contains apple: " + set.contains("apple"));
+        System.out.println("Contains grape: " + set.contains("grape"));
+
+
+        set.remove("banana");
+        System.out.println("Size after removing element: " + set.size());
+
+        Iterator<String> iterator = set.iterator();
+        while (iterator.hasNext()) {
+            String fruit = iterator.next();
+            System.out.println("Next element: " + fruit);
+        }
+
+
+        HashSet<String> fruits = new HashSet<>(10);
+        fruits.add("apple");
+        fruits.add("cherry");
+        System.out.println("Contains all fruits: " + set.containsAll(fruits));
+
+
+        set.addAll(fruits);
+        System.out.println("Size after adding fruits: " + set.size());
+
+
+        fruits.add("orange");
+        set.retainAll(fruits);
+        System.out.println("Size after retaining fruits: " + set.size());
+
+
+        fruits.remove("apple");
+        set.removeAll(fruits);
+        System.out.println("Size after removing fruits: " + set.size());
+
+
+        set.clear();
+        System.out.println("Size after clearing: " + set.size());
+
     }
 }
-
-
-
-
