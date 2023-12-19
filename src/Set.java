@@ -1,4 +1,6 @@
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class Set<E> {
 
@@ -30,5 +32,34 @@ public class Set<E> {
 
     public void add(E x) {
         map.put(x,null);
+    }
+
+    public void addAll(Collection<E> collection){
+        for(E x : collection){
+            add(x);
+        }
+    }
+
+    public boolean containsAll(Collection<E> collection){
+        for(E x : collection){
+            if(!contains(x)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void removeAll(Collection<E> collection){
+        for(E x : collection){
+            remove(x);
+        }
+    }
+
+    public void retainAll(Collection<E> collection){
+        map.keySet().retainAll(collection);
+    }
+
+    public Iterator<E> iterator(){
+        return map.keySet().iterator();
     }
 }
